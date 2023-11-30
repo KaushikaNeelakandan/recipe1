@@ -33,16 +33,49 @@ export default function RecipeDetails({recipes}) {
     const {title,featuredImage,cookingTime,ingredients,method}=recipes.fields;
     console.log(method)
     return (
-      <div>
-       <h1> {title}</h1>
-       <Image src={'https:'+ featuredImage.fields.file.url} 
+        <div><h1> {title}</h1>
+            <div className='desc'>
+                
+                <div className='titleimg'>       
+            
+                <Image src={'https:'+ featuredImage.fields.file.url} 
              width={featuredImage.fields.file.details.image.width}
              height={featuredImage.fields.file.details.image.height}/>
+             </div>
+
+        <div>
        <h4>Cooking Time: {cookingTime}mins</h4>
        <h5>Ingredients</h5>
        <ul>{ingredients.map(i=><li>{i}</li>)}</ul> 
         <h5>Method</h5>
         <p>{method.content[0].content[0].value}</p>
-      </div>
+        </div>
+        <style jsx>
+            {`
+                div{
+                    margin:20px;
+                }
+                ul{
+                    margin:20px;
+                }
+                h5{
+                    margin:20px;
+                }
+                p{
+                    margin:20px;
+                }
+                .desc{
+                    display:grid;
+                    grid-template-columns:1fr 2fr;
+                    
+                }
+                .titleimg{
+                    display:flex;
+                    flex-direction:column;
+                    justify-content:space-around;
+
+                }
+            `}</style>
+      </div></div>
     )
   }
